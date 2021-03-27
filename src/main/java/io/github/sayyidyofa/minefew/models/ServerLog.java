@@ -12,4 +12,13 @@ public class ServerLog {
     public String serverEvent;
     public Date timestamp;
     public String serverAddress;
+
+    @Override
+    public String toString() {
+        return '{' +
+                "\"serverEvent\": \"" + serverEvent + "\"," +
+                "\"timestamp\": \"" + timestamp.toString() + "\"," +
+                "\"serverAddress\": \"" + serverAddress + "\"," +
+                '}';
+    }
 }

@@ -16,4 +16,15 @@ public class PlayerLog {
         this.playerAddress = remoteAddress;
         this.serverAddress = serverAddress;
     }
+
+    @Override
+    public String toString() {
+        return '{' +
+                "\"playerName\": \"" + playerName + "\"," +
+                "\"timestamp\": \"" + timestamp.toString() + "\"," +
+                "\"action\": \"" + action + "\"," +
+                "\"playerAddress\": \"" + playerAddress + "\"," +
+                "\"serverAddress\": \"" + serverAddress + '\"' +
+                '}';
+    }
 }

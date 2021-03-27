@@ -1,14 +1,6 @@
 package io.github.sayyidyofa.minefew.utils;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonParseException;
-import io.github.sayyidyofa.minefew.Minefew;
 import org.apache.commons.lang3.StringUtils;
-
-import java.io.IOException;
-import java.io.Reader;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -16,41 +8,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Helpers {
-    public static String serialize(Object object) {
-        return new Gson().toJson(object);
-    }
-
-    public static Object deserialize(String jsonString, Class refClass) {
-        Object object = null;
-        try {
-            object =  new Gson().fromJson(jsonString, refClass);
-        } catch (JsonParseException exception) {
-            Minefew.LOGGER.error(
-                    String.format(
-                            "FATAL: can't convert JSON to type: %s. String content: %s",
-                            refClass.getCanonicalName(),
-                            jsonString
-                    ));
-        }
-        return object;
-    }
-
-    public static HashMap<?, ?> readJSONFile(String path) {
-        Gson gson = new Gson();
-        Reader reader = null;
-        try {
-            reader = Files.newBufferedReader(Paths.get(path));
-        } catch (IOException e) {
-            Minefew.LOGGER.error(
-                    String.format(
-                            "FATAL: can't read JSON file on path: %s",
-                            path
-                    ));
-        }
-        assert reader != null;
-        return gson.fromJson(reader, HashMap.class);
-    }
-
     public static HashMap<Object, Object> arrayToHashMap(Object[][] objectArray) {
         HashMap<Object, Object> retHashMap = new HashMap<>();
         for (Object[] subArray : objectArray) {
